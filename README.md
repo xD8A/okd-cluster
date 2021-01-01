@@ -6,7 +6,7 @@ Based on https://itnext.io/guide-installing-an-okd-4-5-cluster-508a2631cbee
 
 | Machine | IP Address | MAC Address |
 | --- | --- | --- |
-| hub | 192.168.2.100 | 08:00:27:18:00:01 |
+| hub | 192.168.2.1 | 08:00:27:18:00:01 |
 | bootstrap | 192.168.2.200 | 08:00:27:18:02:00 |
 | master1 | 192.168.2.201 | 08:00:27:18:02:01 |
 | master2 | 192.168.2.202 | 08:00:27:18:02:02 |

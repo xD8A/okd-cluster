@@ -1,4 +1,4 @@
-SET VM=okd-hub2
+SET VM=okd-hub
 
 SET CPU_COUNT=1
 SET RAM_SIZE=4096

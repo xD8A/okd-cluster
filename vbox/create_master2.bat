@@ -1,4 +1,4 @@
-SET VM=okd-bootstrap
+SET VM=okd-master2
 
 SET CPU_COUNT=1
 SET RAM_SIZE=4096
@@ -20,7 +20,7 @@ VBoxManage modifyvm %VM% --ioapic on
 VBoxManage modifyvm %VM% --cpus %CPU_COUNT%
 VBoxManage modifyvm %VM% --memory %RAM_SIZE%
 rem Setup network
-VBoxManage modifyvm %VM% --nic1 intnet --intnet1 %INTNET_NAME% --macaddress1 080027180200
+VBoxManage modifyvm %VM% --nic1 intnet --intnet1 %INTNET_NAME% --macaddress1 080027180202
 rem Create disk 
 VBoxManage createmedium --filename %DISK_PATH% --size %DISK_SIZE%
 VBoxManage storagectl %VM% --name "SATA Controller" --add sata --controller IntelAhci
