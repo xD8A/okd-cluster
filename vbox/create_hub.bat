@@ -7,9 +7,10 @@ SET DISK_SIZE=81920
 SET INTNET_NAME=intnet
 SET VBOXNET_NAME="VirtualBox Host-Only Ethernet Adapter"
 
-SET ISO_PATH=D:\Repo\centos\7\isos\CentOS-7-x86_64-DVD-2009.iso
-SET DISK_PATH=%VBOX_USER_HOME%\%VM%\%VM%.vdi
-SET KS_PATH=..\unattended\hub_ks.cfg
+SET ISO_PATH="D:\Repo\centos\7\isos\CentOS-7-x86_64-DVD-2009.iso"
+SET DISK_PATH="%VBOX_USER_HOME%\%VM%\%VM%.vdi"
+SET KS_PATH="..\unattended\hub_ks.cfg"
+SET POST_PATH="..\unattended\dummy_postinstall.sh"
 
 IF NOT EXIST "%VBOX_USER_HOME%" (
   ECHO "Virtual Box home directory does not exist: %VBOX_USER_HOME%" 1>&2
@@ -21,6 +22,10 @@ IF NOT EXIST "%ISO_PATH%" (
 )
 IF NOT EXIST "%KS_PATH%" (
   ECHO "Kickstart template not found: %KS_PATH%" 1>&2
+  EXIT 3
+)
+IF NOT EXIST "%POST_PATH%" (
+  ECHO "Postinstall template not found: %POST_PATH%" 1>&2
   EXIT 3
 )
 
@@ -44,4 +49,4 @@ VBoxManage storageattach %VM% --storagectl "IDE Controller" --port 1 --device 0 
 rem Setup boot order
 VBoxManage modifyvm %VM% --boot1 disk --boot2 dvd --boot3 none --boot4 none
 rem Unattended install
-VBoxManage unattended install %VM% --iso=%ISO_PATH% --start-vm=gui --script-template=%KS_PATH%
+VBoxManage unattended install %VM% --iso=%ISO_PATH% --start-vm=gui --script-template=%KS_PATH% --post-install-template=%POST_PATH%

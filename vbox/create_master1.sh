@@ -10,8 +10,8 @@ INTNET_NAME=intnet
 
 DISK_PATH="$VBOX_USER_HOME/$VM/$VM.vdi"
 
-if [ ! -d "VBOX_USER_HOME" ]; then
-  echo "Virtual Box home directory does not exist: VBOX_USER_HOME" 1>&2
+if [ ! -d "$VBOX_USER_HOME" ]; then
+  echo "Virtual Box home directory does not exist: $VBOX_USER_HOME" 1>&2
   exit 3
 fi
 

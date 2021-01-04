@@ -6,7 +6,7 @@ SET DISK_SIZE=20480
 
 SET INTNET_NAME=intnet
 
-SET DISK_PATH=%VBOX_USER_HOME%\%VM%\%VM%.vdi
+SET DISK_PATH="%VBOX_USER_HOME%\%VM%\%VM%.vdi"
 
 IF NOT EXIST "%VBOX_USER_HOME%" (
   ECHO "Virtual Box home directory does not exist: %VBOX_USER_HOME%" 1>&2
