@@ -7,7 +7,7 @@ RAM_SIZE=4096
 DISK_SIZE=81920
 
 INTNET_NAME=intnet
-VBOXNET_NAME=vboxnet0
+BRIDGE_NAME=wlp5s0
 
 ISO_PATH=/mnt/data/Repo/centos/7/isos/CentOS-7-x86_64-DVD-2009.iso
 DISK_PATH="$VBOX_USER_HOME/$VM/$VM.vdi"
@@ -40,8 +40,7 @@ VBoxManage modifyvm $VM --cpus $CPU_COUNT
 VBoxManage modifyvm $VM --memory $RAM_SIZE
 # Setup network
 VBoxManage modifyvm $VM --nic1 intnet --intnet1 $INTNET_NAME --macaddress1 080027180001
-VBoxManage modifyvm $VM --nic2 nat
-VBoxManage modifyvm $VM --nic3 hostonly --hostonlyadapter3 $VBOXNET_NAME
+VBoxManage modifyvm $VM --nic2 bridged --bridgeadapter2 $BRIDGE_NAME
 # Create disk
 VBoxManage createmedium --filename "$DISK_PATH" --size $DISK_SIZE
 VBoxManage storagectl $VM --name "SATA Controller" --add sata --controller IntelAhci
